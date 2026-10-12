@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vercel/
+.env*
+!.env.example
+test-results/
+playwright-report/
+운영자료/
+backups/
+프렙카페_전체백업_*.json
+*.log
+.npm-cache/

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary-container": "#828da3",
+          "tertiary-fixed-dim": "#bcc7de",
+          "outline": "#7f756f",
+          "tertiary-fixed": "#d8e3fb",
+          "surface-dim": "#dbdad8",
+          "primary-fixed-dim": "#d3c3ba",
+          "secondary-fixed": "#ffdcc3",
+          "on-secondary-container": "#663500",
+          "secondary-fixed-dim": "#ffb77d",
+          "on-tertiary-fixed": "#111c2d",
+          "error-container": "#ffdad6",
+          "surface-container-low": "#f5f3f1",
+          "primary-container": "#2d241e",
+          "primary": "#170f0a",
+          "outline-variant": "#d1c4bd",
+          "on-tertiary-fixed-variant": "#3c475a",
+          "on-error": "#ffffff",
+          "on-secondary-fixed-variant": "#6e3900",
+          "surface-container-high": "#eae8e6",
+          "primary-fixed": "#f0dfd6",
+          "surface-tint": "#685c55",
+          "on-secondary-fixed": "#2f1500",
+          "secondary-container": "#fe932c",
+          "on-tertiary": "#ffffff",
+          "on-surface-variant": "#4e4540",
+          "inverse-surface": "#30302f",
+          "surface-variant": "#e4e2e0",
+          "on-primary-fixed-variant": "#4f453e",
+          "on-primary-fixed": "#221a14",
+          "on-primary-container": "#988a82",
+          "surface": "#fbf9f7",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-container": "#1b2638",
+          "error": "#ba1a1a",
+          "background": "#fbf9f7",
+          "surface-bright": "#fbf9f7",
+          "on-surface": "#1b1c1b",
+          "inverse-on-surface": "#f2f0ee",
+          "on-error-container": "#93000a",
+          "surface-container": "#efedeb",
+          "on-primary": "#ffffff",
+          "secondary": "#904d00",
+          "on-background": "#1b1c1b",
+          "inverse-primary": "#d3c3ba",
+          "tertiary": "#061122",
+          "surface-container-highest": "#e4e2e0",
+          "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "margin": "1rem",
+          "space-md": "0.875rem",
+          "space-sm": "0.5rem",
+          "space-xs": "0.25rem",
+          "margin-desktop": "2rem",
+          "gutter": "1rem",
+          "space-xl": "2rem",
+          "gutter-desktop": "1.5rem",
+          "space-lg": "1.25rem"
+        },
+        "fontFamily": {
+          "headline-md": ["Inter"],
+          "body-lg": ["Inter"],
+          "headline-lg-mobile": ["Inter"],
+          "headline-lg": ["Inter"],
+          "label-md": ["Inter"],
+          "metric-table": ["Inter"],
+          "label-xs": ["Inter"],
+          "headline-xl": ["Inter"],
+          "headline-xl-mobile": ["Inter"],
+          "body-sm": ["Inter"],
+          "metric-display": ["Inter"],
+          "body-md": ["Inter"]
+        },
+        "fontSize": {
+          "headline-md": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "headline-lg-mobile": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+          "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+          "metric-table": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "600"}],
+          "label-xs": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+          "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+          "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+          "metric-display": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm bg-surface-container-lowest/60"><img alt="Prep Cafe Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WFowY33Uzb-iUqghgrW0XjNZpgegOc5TCeDCfTtnbvIRMjW9yW_w-FZ5TRKaTBR2KPmrLd-mqQJfUWmabaKpCf9b9HRVbIcLyzVmpnCxAiMCpitJ1nSy9SIEWhZlc9VEwZWR25hQj99GnAqDw9cNtC1QUZF9FRvuJNZCzVLFXV3Ty-ygQR_k-LLfm1oXpy15dWC-fYZdrDQbqsdt1QUM8KZzxTgNkPyfIlJx-zBtZbSrAzJvzEw3PsY-zA"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary tracking-tight">프렙 카페</span><span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Store Cockpit</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs mb-space-sm"><span class="font-label-xs text-label-xs uppercase tracking-wider text-on-surface-variant font-semibold">매장 관리 내비게이션</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span class="font-body-md text-body-md">대시보드 & 기간 손익</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg transition-colors bg-primary text-on-primary font-semibold shadow-sm" data-path="sales" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-body-md text-body-md">판매 기록 관리</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="profitability" href="#"><span class="material-symbols-outlined text-[20px]">coffee</span><span class="font-body-md text-body-md">메뉴별 수익성</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="inventory" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-body-md text-body-md">재고 & 발주 관리</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="expenses" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-body-md text-body-md">비용 & 데이터 설정</span></a></nav></div></div><div class="p-space-md bg-surface-container/60 m-space-md rounded-xl flex flex-col gap-space-xs"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-label-xs text-label-xs">포스 단말 동기화</span><span class="material-symbols-outlined text-[16px] text-secondary">sync_alt</span></div><div class="flex items-center gap-space-xs text-on-surface font-label-md text-label-md"><span class="w-2 h-2 rounded-full bg-secondary-container"></span><span>카운터 메인 POS 연결됨</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-on-surface-variant text-[20px]">storefront</span><span class="font-label-md text-label-md text-on-surface font-bold">직영 1호점 (본점)</span><span class="h-4 w-px bg-outline-variant"></span><div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container-high text-on-surface"><span class="material-symbols-outlined text-[16px] text-secondary">cloud_done</span><span class="font-label-xs text-label-xs font-semibold">엑셀 데이터 동기화 완료</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><div class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-container-highest text-on-surface"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-xs text-label-xs font-medium">마감 영업일: 2026-09-18</span></div><div class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-secondary-fixed text-on-secondary-fixed-variant"><span class="material-symbols-outlined text-[14px]">pending_actions</span><span class="font-label-xs text-label-xs font-semibold">미마감: 09-19~09-30 12일</span></div></div><div class="h-4 w-px bg-outline-variant"></div><div class="flex items-center gap-space-sm"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface font-semibold">총괄 점장</span><span class="font-label-xs text-label-xs text-on-surface-variant">admin@prepcafe.kr</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-background w-full min-h-screen"><div class="flex flex-col w-full relative min-h-screen">
+<!-- Underneath Content Simulation: Blurred Sales Ledger Table -->
+<div class="w-full p-space-xl opacity-40 blur-[2px] select-none pointer-events-none flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">판매 기록 관리</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">일자별/채널별 POS 판매 수기 기록 및 실시간 원가 차감 내역</p>
+</div>
+<div class="h-10 px-space-md bg-primary text-on-primary rounded flex items-center gap-space-sm font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>신규 판매 기록 등록</span>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-space-md">
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm">
+<span class="font-label-xs text-label-xs text-on-surface-variant">금일 누적 매출</span>
+<div class="font-metric-display text-metric-display text-primary mt-1">₩1,842,000</div>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm">
+<span class="font-label-xs text-label-xs text-on-surface-variant">식재료 원가율</span>
+<div class="font-metric-display text-metric-display text-secondary mt-1">26.8%</div>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm">
+<span class="font-label-xs text-label-xs text-on-surface-variant">포장 주문 비중</span>
+<div class="font-metric-display text-metric-display text-primary mt-1">48.2%</div>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm">
+<span class="font-label-xs text-label-xs text-on-surface-variant">공헌이익 총액</span>
+<div class="font-metric-display text-metric-display text-primary mt-1">₩1,310,400</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="p-space-md bg-surface-container-low font-label-md text-label-md text-on-surface-variant flex justify-between">
+<span>영업일자: 2026-09-18 (마감 확정)</span>
+<span>총 84건 기록됨</span>
+</div>
+<div class="p-space-lg flex flex-col gap-space-sm">
+<div class="h-9 bg-surface-container-high rounded w-full"></div>
+<div class="h-9 bg-surface-container-low rounded w-full"></div>
+<div class="h-9 bg-surface-container-high rounded w-full"></div>
+<div class="h-9 bg-surface-container-low rounded w-full"></div>
+<div class="h-9 bg-surface-container-high rounded w-full"></div>
+</div>
+</div>
+</div>
+<!-- Modal Backdrop Overlay -->
+<div class="fixed inset-0 z-50 bg-primary/70 backdrop-blur-sm flex items-center justify-center p-space-md overflow-y-auto" id="modal-overlay">
+<!-- Modal Card Container (approx 640px, rounded-2xl style) -->
+<div class="relative w-full max-w-[640px] my-auto bg-surface-container-lowest rounded-full shadow-2xl overflow-hidden flex flex-col transition-all transform scale-100 animate-in fade-in zoom-in-95 duration-200" style="border-radius: 1rem;">
+<!-- Top Subtle Warm Accent Bar -->
+<div class="h-1.5 w-full bg-secondary-container"></div>
+<!-- Header Section -->
+<div class="p-space-lg bg-surface-container-lowest flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">신규 판매 기록 등록</h2>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs">수기 실적 등록</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            하루 동안 판매된 메뉴의 채널별(매장/포장) 최종 합계 수량을 입력하세요.
+          </p>
+</div>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" onclick="document.getElementById('modal-overlay').classList.add('hidden')" title="닫기" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Main Scrollable Form Body -->
+<form class="px-space-lg pb-space-lg flex flex-col gap-space-md overflow-y-auto max-h-[calc(88vh-130px)]" id="sales-record-form">
+<!-- 1. Date Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface flex items-center justify-between">
+<span class="flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span>
+              판매 일자
+            </span>
+<span class="font-label-xs text-label-xs text-secondary font-semibold">영업일 기준 입력</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full h-10 px-space-md pl-10 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-all" id="sale-date" type="date" value="2026-09-18"/>
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-on-surface-variant pointer-events-none">event</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-xs text-label-xs px-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">info</span>
+<span>2026-09-19 이후 일자는 '미마감' 상태로 저장되며 재고 차감은 가승인 처리됩니다.</span>
+</div>
+</div>
+<!-- 2. Menu Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface flex items-center justify-between">
+<span class="flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_cafe</span>
+              메뉴 선택
+            </span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">기준 원가율 자동 적용</span>
+</label>
+<div class="relative flex items-center">
+<select class="w-full h-10 px-space-md pl-10 pr-9 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md appearance-none focus:bg-surface-container-lowest focus:outline-none transition-all cursor-pointer font-medium" id="menu-select">
+<option data-bean="18" data-milk="200" data-price="5000" selected="" value="latte">카페라테 (판매기준가: ₩5,000, 에스프레소 음료)</option>
+<option data-bean="18" data-milk="0" data-price="4500" value="americano">아메리카노 (판매기준가: ₩4,500, 에스프레소 음료)</option>
+<option data-bean="18" data-milk="200" data-price="5500" value="vanilla-latte">바닐라빈 라테 (판매기준가: ₩5,500, 시그니처)</option>
+<option data-bean="22" data-milk="0" data-price="5000" value="coldbrew">콜드브루 (판매기준가: ₩5,000, 브루잉)</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-on-surface-variant pointer-events-none">menu_book</span>
+<span class="material-symbols-outlined absolute right-3 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- 3. Channel Selection (Radio Card Segment) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">forklift</span>
+              판매 채널 선택
+            </span>
+<span class="font-label-xs text-label-xs text-secondary-container font-semibold flex items-center gap-1" id="packaging-flag">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span>
+              포장재 원가 ₩150 자동 연동됨
+            </span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm" id="channel-selector-group">
+<!-- In-Store Option -->
+<label class="channel-card cursor-pointer relative p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container flex items-center gap-space-md transition-all">
+<input class="peer sr-only" name="sales_channel" type="radio" value="store"/>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high peer-checked:bg-primary flex items-center justify-center text-on-surface-variant peer-checked:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">local_cafe</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">매장 (In-Store)</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">다회용기 서빙 · 부자재 ₩0</span>
+</div>
+<div class="absolute right-3 top-3 hidden peer-checked:block text-primary">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+</label>
+<!-- To-Go Option (Default Checked) -->
+<label class="channel-card cursor-pointer relative p-space-md rounded-xl bg-secondary-fixed/50 hover:bg-secondary-fixed flex items-center gap-space-md transition-all">
+<input checked="" class="peer sr-only" name="sales_channel" type="radio" value="togo"/>
+<div class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-secondary-fixed font-bold">포장 (To-Go)</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-white font-label-xs text-label-xs">+₩150</span>
+</div>
+<span class="font-label-xs text-label-xs text-on-secondary-fixed-variant">일회용 컵/리드/홀더 포함</span>
+</div>
+<div class="absolute right-3 top-3 text-secondary peer-checked:block">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+</div>
+</div>
+<!-- 4. Sales Quantity & Fast Increment -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface flex items-center justify-between">
+<span class="flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">pin</span>
+              판매 수량 입력
+            </span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">빠른 가산 버튼 지원</span>
+</label>
+<div class="grid grid-cols-12 gap-space-sm items-center">
+<div class="col-span-7 relative flex items-center">
+<input class="w-full h-10 px-space-md pr-12 rounded-lg bg-surface-container-low text-on-surface font-metric-table text-metric-table focus:bg-surface-container-lowest focus:outline-none transition-all font-bold" id="quantity-input" max="999" min="1" type="number" value="35"/>
+<span class="absolute right-3 font-label-md text-label-md text-on-surface-variant font-semibold">잔</span>
+</div>
+<!-- Quick increment buttons -->
+<div class="col-span-5 flex items-center gap-1 h-10">
+<button class="flex-1 h-full rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold transition-colors" onclick="adjustQty(1)" type="button">
+                +1
+              </button>
+<button class="flex-1 h-full rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold transition-colors" onclick="adjustQty(5)" type="button">
+                +5
+              </button>
+<button class="flex-1 h-full rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold transition-colors" onclick="adjustQty(10)" type="button">
+                +10
+              </button>
+</div>
+</div>
+</div>
+<!-- 5. Unit Price & Discount Group -->
+<div class="grid grid-cols-2 gap-space-md">
+<!-- Unit Price -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1">
+<span>기준 판매단가</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-normal">(수정가능)</span>
+</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-label-md text-label-md text-on-surface-variant">₩</span>
+<input class="w-full h-10 pl-8 pr-space-md rounded-lg bg-surface-container-low text-on-surface font-metric-table text-metric-table text-right focus:bg-surface-container-lowest focus:outline-none transition-all font-semibold" id="unit-price-input" step="100" type="number" value="5000"/>
+</div>
+</div>
+<!-- Total Discount Amount -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+<span>총 프로모션 할인</span>
+<span class="font-label-xs text-label-xs text-error font-medium">차감액</span>
+</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-label-md text-label-md text-error">₩</span>
+<input class="w-full h-10 pl-8 pr-space-md rounded-lg bg-surface-container-low text-error font-metric-table text-metric-table text-right focus:bg-surface-container-lowest focus:outline-none transition-all font-semibold" id="discount-input" step="500" type="number" value="2500"/>
+</div>
+</div>
+</div>
+<!-- 6. Real-time Calculation Preview Card (Warm Tone Container) -->
+<div class="rounded-xl p-space-md bg-surface-container-low flex flex-col gap-space-sm shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary">calculate</span>
+<span class="font-label-md text-label-md font-bold">실시간 단위 수지 분석 미리보기</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-semibold">
+              POS 실시간 연동
+            </span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<!-- Net Sales -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex flex-col justify-between">
+<span class="font-label-xs text-label-xs text-on-surface-variant">순매출액 (수량×단가-할인)</span>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-metric-table text-metric-table text-primary font-bold" id="net-sales-display">₩172,500</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant" id="net-sales-calc-hint">35잔 기준</span>
+</div>
+</div>
+<!-- Fee (2.5%) -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex flex-col justify-between">
+<span class="font-label-xs text-label-xs text-on-surface-variant">예상 결제수수료 (카드 2.5%)</span>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-metric-table text-metric-table text-on-surface-variant font-semibold" id="card-fee-display">-₩4,312</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">정산차감</span>
+</div>
+</div>
+<!-- Total Cost (Ingredients + Packaging) -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-label-xs text-on-surface-variant">예상 원가 합계</span>
+<span class="font-label-xs text-label-xs text-secondary font-semibold" id="cost-detail-tag">포장재 ₩5,250 포함</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-metric-table text-metric-table text-secondary font-bold" id="total-cost-display">-₩47,250</span>
+<span class="font-label-xs text-label-xs text-secondary-container" id="cost-rate-display">원가율 27.4%</span>
+</div>
+</div>
+<!-- Contribution Profit & Margin -->
+<div class="p-space-sm rounded-lg bg-primary-container text-on-primary flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-label-xs text-primary-fixed">예상 공헌이익 (마진)</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface font-label-xs text-label-xs font-bold" id="margin-rate-display">
+                  70.1%
+                </span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-metric-table text-metric-table text-primary-fixed font-bold text-lg" id="contribution-margin-display">₩120,938</span>
+<span class="font-label-xs text-label-xs text-primary-fixed-dim">세전 실질마진</span>
+</div>
+</div>
+</div>
+<!-- Recipe & Packaging Breakdown Footnote -->
+<div class="mt-1 px-1 flex items-center justify-between text-on-surface-variant font-label-xs text-label-xs">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">coffee_maker</span>
+<span id="recipe-breakdown-text">레시피: 매일우유 200ml × 35잔 + 에스프레소 원두 18g × 35잔 + To-Go 세트 ₩150 × 35잔</span>
+</span>
+</div>
+</div>
+<!-- 7. Inventory Auto-Deduction Alert Box -->
+<div class="rounded-xl p-space-md bg-surface-container-high/60 flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+</div>
+<div class="flex flex-col gap-0.5 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-bold">재고 원장 자동 차감 예정 알림</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-xs text-label-xs font-semibold">안전재고 양호</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant break-words" id="inventory-alert-text">
+              🥛 <strong class="text-on-surface">매일우유 7,000ml</strong> 차감 예정 (현재 잔량: 14,200ml → 저장 후 <strong class="text-secondary">7,200ml</strong> 남음, 적정 보유중)
+            </p>
+</div>
+</div>
+</form>
+<!-- Footer Action Area -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<button class="h-10 px-space-md rounded-lg bg-surface-container text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors font-label-md text-label-md flex items-center gap-1 font-semibold" onclick="resetSalesForm()" type="button">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+          입력 초기화
+        </button>
+<div class="flex items-center gap-space-sm">
+<button class="h-10 px-space-lg rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-label-md font-semibold" onclick="document.getElementById('modal-overlay').classList.add('hidden')" type="button">
+            취소
+          </button>
+<button class="h-10 px-space-xl rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all shadow-md hover:shadow-lg font-label-md text-label-md font-bold flex items-center gap-1.5 active:scale-95" onclick="saveSalesRecord()" type="button">
+<span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+            판매 기록 저장
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function formatWon(val) {
+    return '₩' + Math.round(val).toLocaleString('ko-KR');
+  }
+
+  function adjustQty(amount) {
+    const qtyInput = document.getElementById('quantity-input');
+    let current = parseInt(qtyInput.value, 10) || 0;
+    current = Math.max(1, current + amount);
+    qtyInput.value = current;
+    recalculateSales();
+  }
+
+  function recalculateSales() {
+    const qty = parseInt(document.getElementById('quantity-input').value, 10) || 0;
+    const unitPrice = parseFloat(document.getElementById('unit-price-input').value) || 0;
+    const discount = parseFloat(document.getElementById('discount-input').value) || 0;
+    
+    const channelRadios = document.getElementsByName('sales_channel');
+    let isToGo = true;
+    for (const r of channelRadios) {
+      if (r.checked) {
+        isToGo = (r.value === 'togo');
+        break;
+      }
+    }
+
+    // Cost specs for Cafe Latte
+    const milkPerCup = 200; // ml
+    const milkUnitCost = 1.6; // 1.6 KRW per ml (3,200 KRW per 2L)
+    const beanPerCup = 18; // g
+    const beanUnitCost = 40; // 40 KRW per g (₩20,000 / 500g)
+    const packagingCostPerCup = isToGo ? 150 : 0; // Cup + Lid + Carrier
+
+    const rawIngredientCostPerUnit = (milkPerCup * milkUnitCost) + (beanPerCup * beanUnitCost); // 320 + 720 = 1040
+    const totalUnitCost = rawIngredientCostPerUnit + packagingCostPerCup; // 1,190 (To-go) or 1,040 (Store)
+
+    // Gross Sales
+    const grossSales = qty * unitPrice;
+    const netSales = Math.max(0, grossSales - discount);
+    
+    // Fee 2.5%
+    const cardFee = netSales * 0.025;
+    
+    // Total Cost
+    const totalCost = totalUnitCost * qty;
+    const totalPackaging = packagingCostPerCup * qty;
+
+    // Margin
+    const contributionMargin = netSales - cardFee - totalCost;
+    const marginRate = netSales > 0 ? (contributionMargin / netSales * 100).toFixed(1) : '0.0';
+    const costRate = netSales > 0 ? (totalCost / netSales * 100).toFixed(1) : '0.0';
+
+    // Update DOM Display
+    document.getElementById('net-sales-display').innerText = formatWon(netSales);
+    document.getElementById('net-sales-calc-hint').innerText = `${qty}잔 기준`;
+    document.getElementById('card-fee-display').innerText = '-' + formatWon(cardFee);
+    document.getElementById('total-cost-display').innerText = '-' + formatWon(totalCost);
+    document.getElementById('cost-rate-display').innerText = `원가율 ${costRate}%`;
+    document.getElementById('cost-detail-tag').innerText = isToGo ? `포장재 ${formatWon(totalPackaging)} 포함` : '매장 다회용기 사용';
+    
+    document.getElementById('contribution-margin-display').innerText = formatWon(contributionMargin);
+    document.getElementById('margin-rate-display').innerText = `${marginRate}%`;
+
+    // Dynamic Recipe Text
+    const recipeText = isToGo 
+      ? `레시피: 매일우유 ${milkPerCup}ml × ${qty}잔 + 에스프레소 원두 ${beanPerCup}g × ${qty}잔 + To-Go 패키징 ₩150 × ${qty}잔`
+      : `레시피: 매일우유 ${milkPerCup}ml × ${qty}잔 + 에스프레소 원두 ${beanPerCup}g × ${qty}잔 (포장 부자재 제외)`;
+    document.getElementById('recipe-breakdown-text').innerText = recipeText;
+
+    // Inventory Deduction Display
+    const totalMilkUsed = milkPerCup * qty;
+    const currentMilkStock = 14200;
+    const remainingStock = Math.max(0, currentMilkStock - totalMilkUsed);
+    document.getElementById('inventory-alert-text').innerHTML = 
+      `🥛 <strong class="text-on-surface">매일우유 ${totalMilkUsed.toLocaleString()}ml</strong> 차감 예정 (현재 잔량: ${currentMilkStock.toLocaleString()}ml → 저장 후 <strong class="text-secondary">${remainingStock.toLocaleString()}ml</strong> 남음, 안전재고 확보)`;
+
+    // Indicator tag update
+    const packFlag = document.getElementById('packaging-flag');
+    if (isToGo) {
+      packFlag.innerHTML = `<span class="material-symbols-outlined text-[14px]">inventory_2</span> 포장재 원가 ₩150 자동 연동됨`;
+      packFlag.classList.remove('text-on-surface-variant');
+      packFlag.classList.add('text-secondary-container');
+    } else {
+      packFlag.innerHTML = `<span class="material-symbols-outlined text-[14px]">check</span> 매장 다회용 잔 (부자재 ₩0)`;
+      packFlag.classList.remove('text-secondary-container');
+      packFlag.classList.add('text-on-surface-variant');
+    }
+  }
+
+  // Bind change events
+  document.getElementById('quantity-input').addEventListener('input', recalculateSales);
+  document.getElementById('unit-price-input').addEventListener('input', recalculateSales);
+  document.getElementById('discount-input').addEventListener('input', recalculateSales);
+
+  document.querySelectorAll('input[name="sales_channel"]').forEach((el) => {
+    el.addEventListener('change', () => {
+      document.querySelectorAll('.channel-card').forEach((card) => {
+        const input = card.querySelector('input');
+        if (input.checked) {
+          card.classList.remove('bg-surface-container-low');
+          card.classList.add('bg-secondary-fixed/50');
+        } else {
+          card.classList.remove('bg-secondary-fixed/50');
+          card.classList.add('bg-surface-container-low');
+        }
+      });
+      recalculateSales();
+    });
+  });
+
+  document.getElementById('menu-select').addEventListener('change', function() {
+    const selectedOption = this.options[this.selectedIndex];
+    const price = selectedOption.getAttribute('data-price');
+    if (price) {
+      document.getElementById('unit-price-input').value = price;
+      recalculateSales();
+    }
+  });
+
+  function resetSalesForm() {
+    document.getElementById('sale-date').value = '2026-09-18';
+    document.getElementById('menu-select').selectedIndex = 0;
+    document.getElementById('quantity-input').value = '35';
+    document.getElementById('unit-price-input').value = '5000';
+    document.getElementById('discount-input').value = '0';
+    
+    const togoRadio = document.querySelector('input[name="sales_channel"][value="togo"]');
+    if (togoRadio) {
+      togoRadio.checked = true;
+      togoRadio.dispatchEvent(new Event('change'));
+    }
+    recalculateSales();
+  }
+
+  function saveSalesRecord() {
+    const btn = event.currentTarget;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span> 동기화 중...`;
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">done</span> 저장 완료`;
+      btn.classList.add('bg-secondary');
+      setTimeout(() => {
+        document.getElementById('modal-overlay').classList.add('hidden');
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        btn.classList.remove('bg-secondary');
+      }, 700);
+    }, 600);
+  }
+
+  // Initial calculation run
+  recalculateSales();
+</script></main></div></body></html>
