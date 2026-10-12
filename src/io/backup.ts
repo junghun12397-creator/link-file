@@ -7,6 +7,14 @@ import { validateData, validateSaleRecord } from './validation';
 export const backupIdentifier = 'prep-cafe-ops-backup';
 export interface Backup { identifier: typeof backupIdentifier; backupFormatVersion: 1; dataSchemaVersion: 1; calculationVersion: 1; createdAt: string; data: Data }
 const numeric = new Set(['quantity', 'price', 'unit_price', 'discount_amount', 'net_sales', 'payment_fee', 'unit_food_cost_snapshot', 'unit_packaging_cost_snapshot', 'pack_quantity', 'base_pack_price', 'lead_days', 'safety_days', 'pack_price', 'counted_quantity', 'unit_cost', 'amount', 'seed', 'waste_cost_snapshot']);
+// Only a successfully decoded, deeply immutable object can reuse validation.
+const verified = new WeakMap<object, string>();
+function freezeTree(value: unknown) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    for (const child of Object.values(value)) freezeTree(child);
+    Object.freeze(value);
+  }
+}
 function wire(value: unknown, key = ''): unknown {
   if (value == null) return value;
   if (typeof value === 'string' && numeric.has(key)) { dec(value); return new LosslessNumber(value); }
@@ -43,6 +51,7 @@ function safeTree(value: unknown, depth = 0) {
   }
 }
 export function validateBackupData(candidate: unknown): Data {
+  if (candidate && typeof candidate === 'object' && verified.get(candidate) === today()) return candidate as Data;
   safeTree(candidate);
   keys(candidate, ['meta', ...Object.keys(allowedRows), 'settings'], 'data');
   const raw = candidate as Record<string, unknown>;
@@ -107,7 +116,9 @@ export function decodeBackup(text: string): Backup {
   const parsed = raw as Record<string, unknown>;
   if (parsed.identifier !== backupIdentifier || parsed.backupFormatVersion !== '1' || parsed.dataSchemaVersion !== '1' || parsed.calculationVersion !== '1') throw new AppError('제품 백업이 아니거나 지원하지 않는 버전입니다. 원본 운영 JSON은 복원 파일이 아닙니다.', 'BACKUP_FORMAT');
   if (typeof parsed.createdAt !== 'string' || !Number.isFinite(Date.parse(parsed.createdAt))) throw new AppError('백업 생성시각을 확인할 수 없습니다.', 'BACKUP_FORMAT');
-  return { identifier: backupIdentifier, backupFormatVersion: 1, dataSchemaVersion: 1, calculationVersion: 1, createdAt: parsed.createdAt, data: validateBackupData(parsed.data) };
+  const data = validateBackupData(parsed.data);
+  freezeTree(data); verified.set(data, today());
+  return { identifier: backupIdentifier, backupFormatVersion: 1, dataSchemaVersion: 1, calculationVersion: 1, createdAt: parsed.createdAt, data };
 }
 export function backupFileName(date = new Date()) {
   const parts = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' }).format(date).replace(/[-:]/g, '').replace(' ', '_');

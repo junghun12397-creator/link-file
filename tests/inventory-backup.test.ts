@@ -44,6 +44,14 @@ describe('inventory records', () => {
   });
 });
 describe('full numeric JSON backup and strict restore validation', () => {
+  it('reuses validation only for immutable decoded data, not a changed copy', () => {
+    const decoded = decodeBackup(encodeBackup(snap(fixture()))).data;
+    expect(Object.isFrozen(decoded.sales)).toBe(true);
+    expect(() => { decoded.materials[0].unit = '개'; }).toThrow();
+    expect(validateBackupData(decoded)).toBe(decoded);
+    const changed = structuredClone(decoded); changed.menus = [];
+    expect(() => validateBackupData(changed)).toThrow();
+  });
   it('round-trips all source fields, numeric tokens, raw precision, null and zero', () => {
     const data = seedData(); data.sales[0].unit_food_cost_snapshot = '460.1234567890123456789012345'; data.sales[1].unit_packaging_cost_snapshot = null;
     const encoded = encodeBackup(snap(data)); expect(encoded).toContain('"unit_food_cost_snapshot":460.1234567890123456789012345'); expect(encoded).toContain('"unit_packaging_cost_snapshot":null'); expect(encoded).not.toContain('"amount":"');
